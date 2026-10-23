@@ -25,9 +25,14 @@ import {
   X,
 } from "lucide-react";
 
-const API = (
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api"
-).replace(/\/$/, "");
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080"
+)
+  .trim()
+  .replace(/\/+$/, "")
+  .replace(/\/api$/, "");
+
+const API = `${API_BASE_URL}/api`;
 
 const LANGUAGES = [
   { value: "en-IN", label: "English (India)" },
